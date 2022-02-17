@@ -25,28 +25,32 @@ function computerThrow() {
     
 }
 //player inputs a throw
-function playerThrow() {
-    let input = prompt("Rock Paper Scissors").toLowerCase()
-    switch(input) {
-        case "rock":
-            playerHand = "Rock"
-            break;
-        case "paper":
-            playerHand = "Paper"
-            break;
-        case "scissors":
-            playerHand = "Scissors"
-            break;
-        default: 
-            alert('Please write "rock", "paper" or "scissors')
-        playerThrow()
-        break;
-    }
-}
+let rockButton = document.querySelector(`#rockButton`);
+rockButton.addEventListener("click", function() {
+    playerHand = "Rock";
+    singleGame()
+})
+
+
+let paperButton = document.querySelector(`#paperButton`);
+paperButton.addEventListener("click", function() {
+    playerHand = "Paper";
+    singleGame()
+})
+
+let scissorsButton = document.querySelector(`#scissorsButton`);
+scissorsButton.addEventListener("click", function() {
+    playerHand = "Scissors";
+    singleGame()
+})
+
+
+
+    
+
 //throws are compared, winner selected
 function singleGame() {
     computerThrow();
-    playerThrow();
     if(computerHand === playerHand) {
         roundWinner = "draw";
         updateScores()
@@ -62,28 +66,27 @@ function singleGame() {
 }
 //scores are added
 function updateScores() {
+    let results = document.querySelector(`.reportpchand`)
     if(roundWinner == "draw") {
-        alert(`It's a draw! You both played ${playerHand}. Current scores: Player: ${playerScore}; Computer: ${computerScore}`)
-        singleGame()
+        results.textContent = (`It's a draw! You both played ${playerHand}.`)
+        printScores()
     }else if(roundWinner == "playerWinner") {
         ++playerScore;
-        if( playerScore == 3) {
-            alert(`Congrats! You're the big winner. You threw ${playerHand} while the computer threw ${computerHand}. Final scores: You: ${playerScore}; Computer: ${computerScore}`)
+        if( playerScore == 5) {
+            results.textContent = (`Congrats! You're the big winner. You threw ${playerHand} while the computer threw ${computerHand}. Final scores: You: ${playerScore}; Computer: ${computerScore}`)
             resetScores()
-            singleGame()
         } else {
-            alert(`You win! You threw ${playerHand} while the computer threw ${computerHand}. Current scores: Player: ${playerScore}; Computer: ${computerScore}`)
-            singleGame()
+            results.textContent = (`You win! You threw ${playerHand} while the computer threw ${computerHand}.`)
+            printScores()
         }
     } else {
         ++computerScore;
-        if(computerScore == 3) {
-            alert(`Unfortunate! You're the big loser. You threw ${playerHand} while the computer threw ${computerHand}. Final scores: You: ${playerScore}; Computer: ${computerScore}`)
+        if(computerScore == 5) {
+            results.textContent = (`Unfortunate! You're the big loser. You threw ${playerHand} while the computer threw ${computerHand}. Final scores: You: ${playerScore}; Computer: ${computerScore}`)
             resetScores()
-            singleGame()
         } else {
-            alert(`You lose. You threw ${playerHand} while the computer threw ${computerHand}. Current scores: Player: ${playerScore}; Computer: ${computerScore} `)
-            singleGame()
+            results.textContent = (`You lose. You threw ${playerHand} while the computer threw ${computerHand}.`)
+            printScores()
         }
     }
 }
@@ -91,8 +94,14 @@ function updateScores() {
 
 //reset scores
 function resetScores() {
+    printScores()
     playerScore = 0;
     computerScore = 0;
 }
 
-singleGame()
+function printScores() {
+    let pplayerscore = document.querySelector(`.playerscorenumber`)
+    let ppcscore = document.querySelector(`.pcscorenumber`)
+    pplayerscore.textContent = playerScore
+    ppcscore.textContent = computerScore
+}

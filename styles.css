@@ -1,0 +1,95 @@
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+    
+}
+
+
+h1 {
+    align-self: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+    justify-content: space-between;
+    height:100%
+}
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: 2;
+}
+
+.playerscore, .pcscores {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 25px;
+}
+.playerscorenumber, .pcscorenumber {
+    text-align: center;
+    font-size: 35px;
+}
+
+.victorymessages {
+    width: 500px;
+    font-size: 30px;
+}
+
+.playarea {
+    display:flex;
+    flex-direction: column;
+    justify-content:top;
+    flex-grow: 8;
+}
+
+.playerplayarea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.pcplayarea {
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin: 30px
+}
+
+.playerplayareabuttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+button {
+    margin: 20px;
+    font-size: 30px;
+    height: 40px;
+}
+
+label {
+    height: 40px;
+    margin: 20px
+}
+
+.reportpchand {
+    text-align: center;
+    font-size: 30px;
+}
